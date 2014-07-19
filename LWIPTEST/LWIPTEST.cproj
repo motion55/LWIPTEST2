@@ -151,12 +151,12 @@
       <Value>../src/ASF/thirdparty/lwip/lwip-1.4.0/src/include/ipv4</Value>
       <Value>../src/ASF/thirdparty/lwip/lwip-1.4.0/src/include/netif</Value>
       <Value>../src/network</Value>
-      <Value>../src/httpserver/inc</Value>
       <Value>../src/ASF/avr32/drivers/eic</Value>
       <Value>../src/ASF/avr32/drivers/usart</Value>
       <Value>../src/ASF/avr32/utils/debug</Value>
       <Value>../src/ASF/common/services/serial/uc3_usart</Value>
       <Value>../src/ASF/common/services/serial</Value>
+      <Value>../src/httpserver</Value>
     </ListValues>
   </avr32gcc.compiler.directories.IncludePaths>
   <avr32gcc.compiler.optimization.level>Optimize more (-O2)</avr32gcc.compiler.optimization.level>
@@ -411,8 +411,6 @@
     <Folder Include="src\ASF\thirdparty\lwip\lwip-port-1.4.0\at32uc3\include\netif\" />
     <Folder Include="src\ASF\thirdparty\lwip\lwip-port-1.4.0\at32uc3\netif\" />
     <Folder Include="src\config\" />
-    <Folder Include="src\httpserver\inc" />
-    <Folder Include="src\httpserver\src" />
     <Folder Include="src\network\" />
     <Folder Include="src\httpserver" />
   </ItemGroup>
@@ -678,28 +676,28 @@
     <Compile Include="src\config\lwipopts.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\httpserver\inc\fs.h">
+    <Compile Include="src\httpserver\fs.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\httpserver\inc\fsdata.h">
+    <Compile Include="src\httpserver\fs.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\httpserver\inc\httpd.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\httpserver\inc\httpd_structs.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\httpserver\src\fs.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <None Include="src\httpserver\src\fsdata.c">
+    <None Include="src\httpserver\fsdata.c">
       <SubType>compile</SubType>
     </None>
-    <Compile Include="src\httpserver\src\httpd.c">
+    <Compile Include="src\httpserver\fsdata.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\httpserver\src\httpd_cgi_ssi.c">
+    <Compile Include="src\httpserver\httpd.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\httpserver\httpd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\httpserver\httpd_cgi_ssi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\httpserver\httpd_structs.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\network\ethernet.c">
