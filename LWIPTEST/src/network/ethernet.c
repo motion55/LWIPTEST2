@@ -80,6 +80,7 @@
 #if (HTTP_USED == 1)
 	#include "httpserver/httpd.h"
 #endif
+	#include "COMM_server.h"
 #endif
 
 /* lwIP includes */
@@ -186,6 +187,10 @@ void EthernetInit( void )
 #else
 	/* Http webserver Init */
 	httpd_init();
+
+	#ifdef _COMM_SERVER_H_
+	COMM_server_start();
+	#endif
 #endif  
 }
 
@@ -293,13 +298,13 @@ static void prvEthernetConfigureInterface(void * param)
 	/* Setup callback function for netif status change */
 	netif_set_status_callback(&MACB_if, status_callback);
 
-#if LWIP_DHCP
-	/* bring it up */
-	dhcp_start( &MACB_if );
-	sendMessage("LwIP: DHCP Started");
-#else  
 	/*  When the netif is fully configured this function must be called.*/
 	netif_set_up( &MACB_if );
+	
+#if LWIP_DHCP
+	/* bring DHCP up */
+	dhcp_start( &MACB_if );
+	sendMessage("LwIP: DHCP Started");
 #endif  
 }
 
